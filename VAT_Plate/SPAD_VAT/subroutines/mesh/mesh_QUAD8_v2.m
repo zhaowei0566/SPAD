@@ -1,6 +1,8 @@
 function FEM = mesh_QUAD8_v2(xmesh,ymesh)
 
-% MESH NAUTRUAL SPACE FOR 8-noded QUAD
+% MESH NATURAL SPACE FOR 8-noded QUAD
+% X [-1,1]
+% Y [-1,1]
 
 
 xmesh_nodes_1 = 2*xmesh+1; xcords_1 = linspace(-1,1,xmesh_nodes_1);
