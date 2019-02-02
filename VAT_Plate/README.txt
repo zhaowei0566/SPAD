@@ -4,3 +4,6 @@ A finite element analysis code for variable angle tow (VAT) laminated plate
 3) vibration analysis
 
 To be added!
+
+
+check repository Thermal_VAT
