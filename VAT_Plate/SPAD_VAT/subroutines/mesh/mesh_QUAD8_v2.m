@@ -137,13 +137,6 @@ end
 
 
 
-
-
-
-
-
-
-
 FEM.nodesCord = All_node_cords;
 FEM.elementNodes = elements_con;
 
