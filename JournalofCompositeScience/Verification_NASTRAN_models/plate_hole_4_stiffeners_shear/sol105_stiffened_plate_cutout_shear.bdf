@@ -1,0 +1,100 @@
+$ NASTRAN input file created by the Patran 2016 input file translator on
+$  March     12, 2018 at 21:42:13.
+$ Direct Text Input for Nastran System Cell Section
+$ Linear Static Analysis, Database
+SOL 105
+CEND
+TITLE = MSC.NASTRAN JOB CREATED ON 19-DEC-17 AT 14:52:38
+ECHO = NONE
+SUBCASE 1
+$ Subcase name : Default
+   SUBTITLE=Default
+   SPC = 2
+   LOAD = 1
+   DISPLACEMENT(SORT1,REAL)=ALL
+ $  SPCFORCES(SORT1,REAL)=ALL
+   STRESS(SORT1,REAL,VONMISES,BILIN)=ALL
+SUBCASE 2
+$ Subcase name : initial_disp_deltaU
+   SUBTITLE=initial_disp_deltaU
+   SPC = 22
+   METHOD = 10
+   VECTOR(SORT1,REAL)=ALL
+ $  SPCFORCES(SORT1,REAL)=ALL
+   STATSUB = 1
+   
+BEGIN BULK
+param,grdpnt,0
+PARAM    POST    0
+PARAM   PRTMAXIM YES
+$1......2.......3.......4.......5.......6.......7.......8.......9.......
+EIGRL   10                      10      0                       MAX
+$ Elements and Element Properties for region : pcomp.1
+$ Composite Property Reference Material: pcomp.1
+$ Composite Material Description :
+include 'GRID.dat'
+include 'CQUAD4.dat'
+include 'LV_VAT_fiber_straight.dat'
+$  include 'square_SPC1_para.dat'
+
+$1......2.......3.......4.......5.......6.......7.......8.......9.......             
+$ PBEAM   3011    778     1.0322-5 8.88-115.038-14        2.653-12          
+$ PBEAM   3001    778     2.0710-51.787-107.149-12        2.136-11          
+$1......2.......3.......4.......5.......6.......7.......8.......9.......
+MAT8     777    1.81+11 1.027+10 .280   7.17+9  4.00+9  4.00+9    1800.
+MAT1     778    1.81+11 7.17+9          1800.
+
+include 'stiffener_1.dat'
+include 'stiffener_2.dat'
+include 'stiffener_3.dat'
+include 'stiffener_4.dat'
+$1......2.......3.......4.......5.......6.......7.......8.......9.......   
+$PBEAM   101     778     1.0322-5 8.88-115.038-14        2.653-12          
+$ PBEAM   102     778     2.0710-51.787-107.149-12        2.136-11 
+
+$1......2.......3.......4.......5.......6.......7.......8.......9.......   
+$ PBEAM,PID,MID,A,I1,I2,I12,J,NSM
+PBEAM,   101 ,    778,     5.1775-6,1.11696-11,4.4678e-13 ,   ,  1.33486-12  
+PBEAM,   102 ,    778,     5.1775-6,1.11696-11,4.4678e-13 ,   ,  1.33486-12  
+$ PBEAM,   112 ,    778,     5.1775-6,1.11696-11,4.4678e-10 ,   ,  1.33486-12  
+
+$ Dummy Force Required to Activate the Following Enforced Displacements
+$1......2.......3.......4.......5.......6.......7.......8.......9.......        
+SPCADD   2       52      53       54      55        62      63      64
+         65      69 
+         
+$    11
+$		 69       
+		 $11
+INCLUDE 'square_SPC1_fixed_ws.dat'
+$1......2.......3.......4.......5.......6.......7.......8.......9.......     
+FORCE    1       2313            0.     .57735  .57735  .57735
+include 'square_SPCD_LHS_u.dat'
+include 'square_SPCD_LHS_v.dat'
+
+
+$1......2.......3.......4.......5.......6.......7.......8.......9.......     
+FORCE    1       553             0.     .57735  .57735  .57735
+include 'square_SPCD_RHS_u.dat'
+include 'square_SPCD_RHS_v.dat'
+		
+			
+$1......2.......3.......4.......5.......6.......7.......8.......9.......     
+FORCE    1       4453            0.      .57735  .57735  .57735
+include 'square_SPCD_BHS_u.dat'
+include 'square_SPCD_BHS_v.dat'
+
+$1......2.......3.......4.......5.......6.......7.......8.......9.......     
+FORCE    1        953            0.     .57735  .57735  .57735
+include 'square_SPCD_THS_u.dat'
+include 'square_SPCD_THS_v.dat'
+$$$
+ 
+$1......2.......3.......4.......5.......6.......7.......8.......9.......    
+$ SPC1          72     123     1379 
+ 
+SPCADD   22      79       
+$ Displacement Constraints of Load Set : mid
+INCLUDE 'square_SPC1_fixed_uvw.dat'
+
+ENDDATA ef4b7c74
