@@ -14,8 +14,6 @@ function patch_plot(t,p,FID,componment)
 
 % remove all zeros in t
 
-
-
 %%
 switch componment
     
