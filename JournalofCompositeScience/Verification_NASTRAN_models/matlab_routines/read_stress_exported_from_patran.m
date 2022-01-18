@@ -1,9 +1,6 @@
 function Stress=read_stress_exported_from_patran(rpt_fname,minElmid,maxElmid,Layerlimit)
 
 % ************************************************************************
-% Read mode shape from *pch file
-% Delete the last blank lines
-
 
 % Stress output format
 % -Entity ID--El. Pos. ID--X Component---Y Component---XY Component-
