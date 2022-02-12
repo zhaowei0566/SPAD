@@ -4,7 +4,7 @@
 %
 % Provided to readers for cheecking the data/figure reported in the paper
 %% 1. Read NASTRAN elements and nodes
-% The original base bdf file is given in plate_with_hole_stiffeners.bdf
+% The original BASE bdf file is given in plate_with_hole_stiffeners.bdf
 %
 %
 filename = [pwd filesep 'plate_with_hole_stiffeners.bdf'];
@@ -17,15 +17,15 @@ previous_folder_path = fileparts(pwd);
 
 bdf_elem = QUAD4_Elem;
 
-test_case_element_connectivity = bdf_elem(:,3:6);
-test_case_node_cords = bdf_node;
-test_case_node_cords(:,2) = test_case_node_cords (:,2)/0.15*0.254/2 + 0.254/2; % The original side length is 0.3, made slightly changed to 0.254 later.
-test_case_node_cords(:,3) = test_case_node_cords (:,3)/0.15*0.254/2 + 0.254/2;
+BASE_element_connectivity = bdf_elem(:,3:6);
+BASE_node_cords = bdf_node;
+BASE_node_cords(:,2) = BASE_node_cords (:,2)/0.15*0.254/2 + 0.254/2; % The original side length is 0.3, made slightly changed to 0.254 later.
+BASE_node_cords(:,3) = BASE_node_cords (:,3)/0.15*0.254/2 + 0.254/2;
 
-patch_plot(test_case_element_connectivity, test_case_node_cords,201,'skin',test_case_node_cords);colorbar off;title('NASTRAN MESH');
+patch_plot(BASE_element_connectivity, BASE_node_cords,201,'skin',BASE_node_cords);colorbar off;title('NASTRAN MESH');
 
-NASTRAN.grid_cords = test_case_node_cords;
-NASTRAN.elements  = test_case_element_connectivity;
+NASTRAN.grid_cords = BASE_node_cords;
+NASTRAN.elements  = BASE_element_connectivity;
 
 
 %% 2. Read buckling mode shapes
@@ -33,8 +33,8 @@ NASTRAN.elements  = test_case_element_connectivity;
 
 pchfname  = [previous_folder_path filesep 'plate_hole_4_stiffeners_bend\sol105_stiffened_plate_cutout_bend.pch'];
 
-minodeid  = test_case_node_cords(1,1);
-maxnodeid = test_case_node_cords(end,1);
+minodeid  = BASE_node_cords(1,1);
+maxnodeid = BASE_node_cords(end,1);
 
 Modelimit = 10; % maximum mode number
 
@@ -72,7 +72,8 @@ hold off
 
 
 %% 3. Read stress for each layer described in the global coordinate system
-
+% global_cord_stress.rpt include stress described in the global coordinate
+% system, which is obtained using PATRAN
 
 minElmid = 1; % minimum element ID
 maxElmid = size(NASTRAN.elements,1); % maximum element ID

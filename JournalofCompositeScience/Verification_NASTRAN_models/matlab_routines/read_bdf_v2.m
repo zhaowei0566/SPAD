@@ -1,4 +1,4 @@
-function [QUAD4_Elem,TRIA3_Elem,BEAM3_Elem,bdf_node,bdf_cord,...
+function [QUAD4_Elem,TRIA3_Elem,BEAM3_Elem,BEAM2_Elem,bdf_node,bdf_cord,...
     QUAD8_Elem]=read_bdf_v2(filename)
 
 % this function is to read nodes and element connectivity and save in one
@@ -8,6 +8,7 @@ bdf_elem=[];
 QUAD4_Elem=[];
 TRIA3_Elem=[];
 BEAM3_Elem=[];
+BEAM2_Elem=[];
 bdf_node=[];
 bdf_cord=[];
 QUAD8_Elem=[];
@@ -25,6 +26,8 @@ if fid100>0
     quad8_elem_num = 1;
     tria3_elem_num = 1;
     beam3_elem_num = 1;
+    beam2_elem_num = 1;
+    
     node_num=1;
     cord_num=1;
     
@@ -64,9 +67,18 @@ if fid100>0
                 beam3_elem_num = beam3_elem_num+1;
                 
                 
+            elseif strcmp(linebdf(1:5),'CBEAM')
+                
+                bdf_elem_bdf{beam2_elem_num}=linebdf;
+                bdf_elem_temp=linebdf;
+                BEAM2_Elem(beam2_elem_num,:)=str2num(bdf_elem_temp(9:40));
+                
+                beam2_elem_num = beam2_elem_num+1;
+                
+                
             elseif strcmp(linebdf(1:6),'CQUAD8')
-%                 bdf_elem_bdf{quad8_elem_num}=linebdf;
-%                 bdf_elem_temp=linebdf;
+                %                 bdf_elem_bdf{quad8_elem_num}=linebdf;
+                %                 bdf_elem_temp=linebdf;
                 node1 = str2num(linebdf(9:end));
                 
                  linebdf=fgetl(fid100);currentFPI=ftell(fid100);
