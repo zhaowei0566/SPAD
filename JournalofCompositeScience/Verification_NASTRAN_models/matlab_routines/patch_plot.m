@@ -1,7 +1,7 @@
 function patch_plot(t,p,FID,componment,deformation)
 % plot triangle or quadlateral mesh based on points and element
 % connectivity
-% Dec-17.
+% Dec-17. (weizhao@vt.edu)
 % input:
 %   t: element connectivity - just element id; no label, no pid
 %   p: nodes for those elements - include label and coordinates
@@ -9,12 +9,9 @@ function patch_plot(t,p,FID,componment,deformation)
 % The input t or p probably has very arbitry label, it is better to sort
 % them in correct format for patch
 
-
 % 4-node element or 3-node element
 
 % remove all zeros in t
-
-
 
 %%
 
@@ -23,7 +20,7 @@ switch componment
     
     case 'skin'
         
-        facecolor = [0.800000011920929 0.800000011920929 0.800000011920929];
+        facecolor = [0.8 0.8 0.8];
         edgecolor = [1 0 0];
     case 'spar'
         facecolor = [1 1 1];
@@ -172,18 +169,11 @@ elseif element_nodes_num == 3
 
    col = p_updated_only_cordinates(:,3) - p_original_only_cordinates(:,3);
    % 
-    
-   
+       
 %    mag_col = max(abs(col));max(col) - min(col);
-%    
-%  
 %     col = ( col )/mag_col;
-    %% plot
     
     figure(FID);hold on;
-%      axes1 = axes('Parent',hf,...
-%         'DataAspectRatio',[1 1 1],'FontSize',24);
-%     hold(axes1,'all');
     
     patch('Faces',t_temp,'Vertices',p_updated_only_cordinates,...
         'FaceVertexCData',col,'FaceColor',facecolor,'EdgeColor',edgecolor);
