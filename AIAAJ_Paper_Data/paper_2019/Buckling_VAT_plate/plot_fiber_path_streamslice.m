@@ -21,19 +21,13 @@ for itemp = 1:size(centerX,1)
         
         cordtemp =  [abs(centerX(itemp,jtemp)-center(1)) abs(centerY(itemp,jtemp)-center(2)) ] ;
         
-        %                 T0 = T0T1(layer,1);
-        %             T1 = T0T1(layer,2);
-        
-        %              theta = VAT_fiber_ply_angle_1D(T0,T1,centerY(itemp,jtemp),center(2),physical_length);
-        
-        %               theta = VAT_fiber_ply_angle_1D(T0,T1,centerX(itemp,jtemp),center(1),physical_length);
         
         switch flag
             
             case 'NLV'
                 
                 theta = VAT_fiber_ply_angle_Lagrangian_2D( cordtemp ,VAT,layer);
-                %         theta = VAT_fiber_ply_angle_Lagrangian_2D_special(cordtemp,'',layer);
+             
                 
             case  'LV'
                 T0 = T0T1(layer,1);
@@ -74,10 +68,7 @@ vec_p = [1 0 0 0 ;
     3 Plate.length Plate.width 0;
     4 0 Plate.width 0];
 
-% vec_p = [1 -Plate.length -Plate.width 0 ;
-%     2 Plate.length -Plate.width 0;
-%     3 Plate.length Plate.width 0;
-%     4 -Plate.length Plate.width 0];
+
 
 vec_t = [1 2 3 4];
 patch_plot(vec_t,vec_p,34,'skin')
