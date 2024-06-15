@@ -3,3 +3,7 @@ Section_IV_B: NASTRAN verification examples for Section_IV.B
 
 Buckling_VAT_plate:
 Code for buckling anlaysis of Wu et al's example presented in Table 2.
+
+
+Free_Vibration_VAT_plate:
+Code for free free vibration analsis of Rodrigues et al.'s model presented in Section III.A.
