@@ -1,0 +1,9 @@
+Buckling_VAT_plate:
+
+Due to many requests, the code for buckling anlaysis of Wu et al's example is uploaded. 
+The present code for Case a in Table 2 is shown, I will keep uploading other cases in the near
+future.
+
+main program:
+
+Buckling_plate_WuExample_Case_a_Table2.m

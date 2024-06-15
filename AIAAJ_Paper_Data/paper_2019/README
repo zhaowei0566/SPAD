@@ -1,1 +1,5 @@
-Verification examples for Section_IV.
+Section_IV_A: NASTRAN verification examples for Section_IV.A
+Section_IV_B: NASTRAN verification examples for Section_IV.B
+
+Buckling_VAT_plate:
+Code for buckling anlaysis of Wu et al's example presented in Table 2.
