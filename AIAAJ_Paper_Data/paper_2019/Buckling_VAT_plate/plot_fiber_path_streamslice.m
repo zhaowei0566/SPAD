@@ -1,43 +1,7 @@
-% % %
-% % % [centerX,centerY]  = meshgrid(unique(LastPly(:,2,2)),unique(LastPly(:,3,2)));
-% % %
-% % % for itemp = 1:size(centerX,1)
-% % %
-% % %     for jtemp = 1:size(centerY,2)
-% % %
-% % %        cordtemp =  [abs(centerX(itemp,jtemp)-center(1)) abs(centerY(itemp,jtemp)-center(2)) ] ;
-% % %
-% % %
-% % %         theta = VAT_fiber_ply_angle_Lagrangian_2D( cordtemp ,VAT,1);
-% % %
-% % %
-% % %
-% % %
-% % %
-% % %         test_Theta(itemp,jtemp) = theta;
-% % %
-% % %         u(itemp,jtemp) = cosd(theta);
-% % %         v(itemp,jtemp) = sind(theta);
-% % %
-% % %     end
-% % %
-% % % end
-% % %
-% % % figure(200);hold on;
-% % %
-% % % quiver(centerX,centerY,u,v,...
-% % %     'ShowArrowHead','off',...
-% % %     'AutoScaleFactor',15,'LineWidth',1);hold on;
-% % % % % %
-% % % % % % %
-% % % figure;
-% % % startx = linspace(0,Plate.length,30);
-% % % starty = zeros(1,length(startx));
-% % % streamline(centerX,centerY,u,v,startx,starty);
-% % %
+%% A quick tool to check the fiber path
 
+layer = 1
 
-layer = 1;
 [centerX,centerY]  = meshgrid(linspace(0,Plate.length,1001),linspace(0,Plate.width,1001));
 
 
@@ -120,45 +84,47 @@ patch_plot(vec_t,vec_p,34,'skin')
 figure(34);hold on;streamslice(centerX,centerY,u,v,2,'noarrows','nearest');axis image;box on;
 set(gcf,'color','w')
 axis([0 Plate.length 0 Plate.width]);
+set(gca,'FontSize',16);
+set(gcf,'color','w');
 
 figure(34);hold on; line([0 Plate.length],[Plate.width/2 Plate.width/2])
 figure(34);hold on; line([Plate.length/2 Plate.length/2],[Plate.width/2*0 Plate.width])
 
-
-num = 20;
-figure;
+% 
+% num = 20;
+% figure;
+% % startx = linspace(0,Plate.length,num);
+% % starty = ones(1,length(startx))*Plate.width;
+% % streamline(centerX,centerY,u,v,startx,starty);axis image;box on;hold on;
+% % streamline(centerX,centerY,-u,v,startx,starty);axis image;box on;hold on;
+% 
+% 
 % startx = linspace(0,Plate.length,num);
-% starty = ones(1,length(startx))*Plate.width;
-% streamline(centerX,centerY,u,v,startx,starty);axis image;box on;hold on;
-% streamline(centerX,centerY,-u,v,startx,starty);axis image;box on;hold on;
-
-
-startx = linspace(0,Plate.length,num);
-starty = ones(1,num)*Plate.width*0;
-
-streamline(centerX,centerY,u,v,startx,starty);axis image;box on;
-
-starty = linspace(0,Plate.length,num);
-startx = ones(1,num)*Plate.width*0;
-
-streamline(centerX,centerY,u,v,startx,starty);axis image;box on;
-
-
-% hold on;
-% streamline(centerX,centerY,-u,v,startx,starty);axis image;box on;
-
-figure;
-num = 40;
-startx = linspace(0.,Plate.length,num);
-starty = 0.*ones(num,1);
+% starty = ones(1,num)*Plate.width*0;
+% 
+% streamline(centerX,centerY,u,v,startx,starty);axis image;box on;
+% 
 % starty = linspace(0,Plate.length,num);
-
-streamline(centerX,centerY,u,v,startx,starty);axis image;box on;
-
-num = 20;
-startx = linspace(0.,Plate.length,num)*0;
-starty = linspace(0.,Plate.length,num);
-% starty = linspace(0,Plate.length,num);
-
-streamline(centerX,centerY,u,v,startx,starty);axis image;box on;
+% startx = ones(1,num)*Plate.width*0;
+% 
+% streamline(centerX,centerY,u,v,startx,starty);axis image;box on;
+% 
+% 
+% % hold on;
+% % streamline(centerX,centerY,-u,v,startx,starty);axis image;box on;
+% 
+% figure;
+% num = 40;
+% startx = linspace(0.,Plate.length,num);
+% starty = 0.*ones(num,1);
+% % starty = linspace(0,Plate.length,num);
+% 
+% streamline(centerX,centerY,u,v,startx,starty);axis image;box on;
+% 
+% num = 20;
+% startx = linspace(0.,Plate.length,num)*0;
+% starty = linspace(0.,Plate.length,num);
+% % starty = linspace(0,Plate.length,num);
+% 
+% streamline(centerX,centerY,u,v,startx,starty);axis image;box on;
 
